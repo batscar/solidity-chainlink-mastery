@@ -1,2 +1,3 @@
 # solidity-chainlink-mastery
 this repo will be  home to my projects built using solidity &amp; chainlink... STAY TUNED....
+from now onwards i will be building some projects using solidity & chainlink to improve my basics and besides building cool projects are real fun also lol..
