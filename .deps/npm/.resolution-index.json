@@ -1,0 +1,10 @@
+{
+  "projects/01.advanced-simple-Storage/contracts/ADSS.sol": {
+    "__sources__": {
+      "projects/01.advanced-simple-Storage/contracts/ADSS.sol": {
+        "content": "//SPDX-License-Identifier:MIT\n pragma solidity ^0.8.0;\n\n contract simpleStorage{\n\n    \n }\n",
+        "file": "projects/01.advanced-simple-Storage/contracts/ADSS.sol"
+      }
+    }
+  }
+}
