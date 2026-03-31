@@ -6,5 +6,13 @@
         "file": "projects/01.advanced-simple-Storage/contracts/ADSS.sol"
       }
     }
+  },
+  "projects/02.secure-Bank/contracts/secureBank.sol": {
+    "__sources__": {
+      "projects/02.secure-Bank/contracts/secureBank.sol": {
+        "content": "// SPDX-License-Identifier: MIT\n  pragma solidity ^0.8.21;\n\n  contract SecureBank {\n\n    mapping(address => uint256) public balances ;\n\n    event Deposit(address indexed user, uint256 amount);\n    event Withdraw(address indexed user, uint256 amount);\n    event Transfer(address indexed sender, address indexed receiver, uint256 amount);\n    event WithdrawAll(address indexed user, uint256 amount);\n\n    error InsufficientBalance();\n    error ZeroAmount();\n\n    function deposit() public payable {\n        if (msg.value == 0 ) {\n            revert ZeroAmount();\n        }\n\n        balances[msg.sender] += msg.value;\n        emit Deposit(msg.sender, msg.value);\n    }\n\n    function withdraw(uint256 _amount) public {\n        if (_amount == 0) {\n            revert ZeroAmount();\n            \n        }\n\n        if (balances[msg.sender] < _amount) {\n            revert InsufficientBalance();\n        }\n\n        balances[msg.sender] -= _amount;\n        emit Withdraw(msg.sender, _amount);\n\n        (bool success, ) = payable(msg.sender).call{value: _amount}(\"\");\n           if (!success){\n            revert (\"ETH TRANSFER FAILED\");\n           }\n\n  }\n    \n    function wtihdrawAll()  public {\n        uint256 userBalance = balances[msg.sender];\n        \n        if (userBalance == 0){\n            revert ZeroAmount();\n        }\n\n        balances[msg.sender] = 0;\n        emit Withdraw(msg.sender, userBalance);\n        emit WithdrawAll(msg.sender, userBalance);\n\n        ( bool success,  ) = payable(msg.sender).call{value: userBalance}(\"\");\n    if (!success){\n        revert (\"ETH TRANSFER FAILED\");\n    }\n\n    }\n\n    \n\n        function getBalance() public view returns (uint256) {\n            return balances[msg.sender];\n        }\n\n        function getContractBalance() public view returns (uint256) {\n            return address(this).balance;\n    }\n\n    \n    }\n",
+        "file": "projects/02.secure-Bank/contracts/secureBank.sol"
+      }
+    }
   }
 }
