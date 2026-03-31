@@ -59,14 +59,12 @@
     }
 
     }
-
-    
-
-        function getBalance() public view returns (uint256) {
+     
+    function getBalance() public view returns (uint256) {
             return balances[msg.sender];
         }
 
-        function getContractBalance() public view returns (uint256) {
+    function getContractBalance() public view returns (uint256) {
             return address(this).balance;
     }
 
