@@ -1,0 +1,6 @@
+[profile.default]
+src = "projects"
+test = "projects"
+out = "artifacts"
+libs = ["lib"]
+ignored_warnings_from = ["note[screaming-snake-case-immutable]"]
